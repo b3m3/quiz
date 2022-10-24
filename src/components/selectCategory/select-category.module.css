@@ -1,0 +1,69 @@
+.select {
+  position: relative;
+}
+
+.select input, .select label {
+  cursor: pointer;
+}
+
+.select li {
+  display: flex;
+  align-items: center;
+  gap: .625rem;
+}
+
+.select ul {
+  position: absolute;
+  top: 55px;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+
+  display: none;
+  flex-direction: column;
+  gap: .625rem;
+  background: #fff;
+  color: #333;
+  padding: 1.25rem;
+  border-radius: 25px;
+
+  transition: .5s;
+}
+
+.select .open {
+  display: flex;
+}
+
+.top {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #fff;
+  padding: .8125rem;
+  border-radius: 25px;
+}
+
+.top p {
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.top span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: .5s;
+}
+
+.top i {
+  font-size: 13px;
+  position: absolute;
+  content: '';
+  top: -0.6875rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4383f1;
+}
