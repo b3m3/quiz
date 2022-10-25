@@ -1,9 +1,6 @@
-import { useState } from 'react';
 import style from './range.module.css';
 
-const RangeLimit = () => {
-  const [rangevalue, setRangeValue] = useState('');
-
+const RangeLimit = ({ rangevalue, setRangeValue }) => {
   return (
     <div className={style.wrapp}>
       <input

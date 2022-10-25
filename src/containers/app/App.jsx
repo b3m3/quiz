@@ -1,9 +1,14 @@
-import './App.css';
+import Header from '../../components/header';
+import Start from '../start/Start';
+
+import './app.css';
 
 function App() {
+
   return (
-    <div className="App">
-      appp
+    <div className="app">
+      <Header />
+      <Start />
     </div>
   );
 }

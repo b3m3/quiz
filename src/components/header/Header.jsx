@@ -2,12 +2,12 @@ import brain from './img/brain.png';
 
 import style from './header.module.css';
 
-const Header = ({ category, title }) => {
+const Header = () => {
   return (
     <div className="container">
       <header className={style.header}>
 
-        <h1>{title}</h1>
+        <h1>Quiz</h1>
 
         <div className={style.image}>
           <img 

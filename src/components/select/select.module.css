@@ -18,23 +18,25 @@
   z-index: 2;
   top: 55px;
   left: 0;
+  height: 0;
   width: 100%;
   overflow: hidden;
 
-  display: none;
+  display: flex;
   flex-direction: column;
   gap: .625rem;
 
   background: #fff;
   color: #333;
-  padding: 1.25rem;
-  border-radius: 25px;
+  border-radius: 15px;
 
   transition: .5s;
 }
 
 .select .open {
-  display: flex;
+  padding: .9375rem;
+  height: 9.375rem;
+  overflow: auto;
 }
 
 .top {
