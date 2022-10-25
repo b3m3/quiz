@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 
 import Select from '../../components/select/Select';
 import RangeLimit from '../../components/rangeLimit';
+import Button from '../../components/button';
 
 import { CATEGORIES_URL, TAGS_URL } from '../../constans/api';
 import { getApiResource } from '../../service/getApiResource';
@@ -58,6 +59,9 @@ const Start = () => {
         <RangeLimit 
           rangevalue={rangevalue}
           setRangeValue={setRangeValue}
+        />
+        <Button
+          name={'Start'}
         />
       </div>
     </div>
