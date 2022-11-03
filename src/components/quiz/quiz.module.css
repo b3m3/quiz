@@ -1,0 +1,17 @@
+.quiz span {
+  display: block;
+  font-weight: 100;
+  font-size: 14px;
+  opacity: .7;
+  padding: 5px 0;
+}
+
+.quiz h3 {
+  padding: 0 0 20px 0;
+}
+
+.quiz ul {
+  display: flex;
+  flex-direction: column;
+  gap: .625rem;
+}
