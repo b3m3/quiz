@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 
 import Header from '../../components/header/Header';
 import Select from '../../components/select/Select';
@@ -7,18 +7,17 @@ import Button from '../../components/button';
 
 import { CATEGORIES_URL, TAGS_URL } from '../../constans/api';
 import { getApiResource } from '../../service/getApiResource';
+import { Context } from '../../context/context';
 
 import style from './start.module.css';
 
 const StartPage = ({ setCurrentPage }) => {
   const [categories, setCategories] = useState(null);
   const [tags, setTags] = useState(null);
-  const [selectedCategories, setSelectedCategories] = useState([]);
-  const [selectedDifficulty, setSelectedDifficulty] = useState('');
-  const [selectedTags, setSelectedTags] = useState('');
-  const [rangevalue, setRangeValue] = useState('');
 
   const difficultyLvls = ['Random', 'Easy', 'Medium', 'Hard'];
+  const {selectedCategories, selectedDifficulty, selectedTags, rangevalue,
+    setSelectedCategories, setSelectedDifficulty, setSelectedTags, setRangeValue} = useContext(Context);
 
   useEffect(() => {
     (async() => {
