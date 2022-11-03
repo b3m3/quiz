@@ -11,7 +11,7 @@ import Sport from './img/sport.png';
 
 import style from './header.module.css';
 
-const Header = ({ title }) => {
+const Header = ({ title, total }) => {
   const setImage = () => {
     const titleName = title ? title.category.split(' ')[0] : null;
 
@@ -33,8 +33,9 @@ const Header = ({ title }) => {
   return (
     <div className="container">
       <header className={style.header}>
-
-        <h1>{title ? title.category : 'Quiz'}</h1>
+        {total
+          ? <h1>Total</h1>
+          : <h1>{title ? title.category : 'Quiz'}</h1>}
 
         <div className={style.image}>
           <img 
