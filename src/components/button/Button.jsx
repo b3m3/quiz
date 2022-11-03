@@ -21,7 +21,7 @@ const Button = ({ name, numberOfQuestions, currentQuestion, setCurrentPage, setC
   return (
     <div 
       className={style.wrapp}
-      style={name === 'Start' ? {padding: '50px 0 30px 0'} : null}
+      style={name === 'Start' || name === 'Start over' ? {padding: '50px 0 30px 0'} : null}
     >
       <button 
         onClick={() => onClick()}

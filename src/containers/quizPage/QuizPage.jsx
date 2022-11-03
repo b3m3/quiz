@@ -24,7 +24,7 @@ const QuizPage = ({ setCurrentPage }) => {
     const url = 
       ROOT_QUIZ+
       QUESTIONS+
-      (rangevalue ? LIMIT+rangevalue : LIMIT+'10')+
+      (rangevalue === '1' ? LIMIT+'10' : LIMIT+rangevalue)+
       (selectedCategories.length ? CATEGORIES+stringToLink(selectedCategories) : '')+
       (selectedDifficulty !== "Random" && selectedDifficulty.length ? DIFFICULTY+selectedDifficulty.toLowerCase() : '')+
       (selectedTags ? TAGS+stringToLink(selectedTags) : '');

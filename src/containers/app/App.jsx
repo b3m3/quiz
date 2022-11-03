@@ -15,7 +15,7 @@ function App() {
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedDifficulty, setSelectedDifficulty] = useState('');
   const [selectedTags, setSelectedTags] = useState('');
-  const [rangevalue, setRangeValue] = useState('0');
+  const [rangevalue, setRangeValue] = useState('1');
 
   return (
     <Context.Provider value={{

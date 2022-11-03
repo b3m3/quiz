@@ -5,7 +5,7 @@ const RangeLimit = ({ rangevalue, setRangeValue }) => {
     <div className={style.wrapp}>
       <input
         type="range"
-        min={0}
+        min={1}
         max={20}
         step={1}
         value={rangevalue}
@@ -13,7 +13,7 @@ const RangeLimit = ({ rangevalue, setRangeValue }) => {
       />
       <i>
         Number of questions 
-        <b>{rangevalue === '0' || rangevalue === '' ? ' default' : ' ' + rangevalue}</b>
+        <b>{rangevalue === '1' || rangevalue === '' ? ' default' : ' ' + rangevalue}</b>
       </i>
     </div>
   );
