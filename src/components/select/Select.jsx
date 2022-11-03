@@ -44,7 +44,7 @@ const Select = ({
               ? selectedDifficulty
             : selectedTags && selectedTags.length
               ? selectedTags.join(', ').length >= 45 
-                ? selectedTags.join(', ').slice(0, 45) 
+                ? selectedTags.join(', ').slice(0, 45) + '...'
                 : selectedTags.join(', ')
             : 'Random'}
         </p>
