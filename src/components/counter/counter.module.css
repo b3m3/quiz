@@ -1,0 +1,40 @@
+.counter {
+  position: relative;
+  max-width: 200px;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.questions {
+  position: absolute;
+  content: '';
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  align-items: center;
+  gap: .3125rem;
+  gap: 3px;
+}
+
+.slash {
+  opacity: .5;
+}
+
+.clf {
+  transform: rotate(-90deg);
+  stroke-width: 1;
+  stroke: rgba(255, 255, 255 , .4);
+  fill: rgba(0,0,0,0);
+}
+
+.cll {
+  transform: rotate(-90deg);
+  stroke-width: 2;
+  stroke: rgba(255, 255, 255 , 1);
+  fill: rgba(0,0,0,0);
+}
