@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 
 import Header from '../../components/header/Header';
 import Quiz from '../../components/quiz/Quiz';
+import Counter from '../../components/counter/Counter';
 
 import { getApiResource } from '../../service/getApiResource';
 import { DEFAULT_URL } from '../../constans/api';
@@ -12,7 +13,7 @@ const QuizPage = ({ setCurrentPage }) => {
   const [resultsQuestions, setResultsQuestions] = useState(null);
   const [categories, setCategories] = useState(null);
   const [numberOfQuestions, setNumberOfQuestions] = useState(null);
-  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [currentQuestion, setCurrentQuestion] = useState(1);
 
   useEffect(() => {
     (async() => {
@@ -35,6 +36,10 @@ const QuizPage = ({ setCurrentPage }) => {
       <div className={style.quiz}>
         <Header 
           title={categories}
+        />
+        <Counter
+          guessedQuestions={currentQuestion}
+          totalQuestions={numberOfQuestions}
         />
         <Quiz 
           arrData={resultsQuestions}

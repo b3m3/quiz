@@ -27,7 +27,7 @@ const Counter = ({ big, guessedQuestions, totalQuestions }) => {
         className={style.questions}
         style={big 
           ? {fontSize: "34px"}
-          : {fontSize: "14px"}}
+          : {fontSize: "12px"}}
       >
         <span>{guessedQuestions}</span>
         <span className={style.slash}>/</span>
