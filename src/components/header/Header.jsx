@@ -31,20 +31,18 @@ const Header = ({ title, total }) => {
   };
 
   return (
-    <div className="container">
-      <header className={style.header}>
-        {total
-          ? <h1>Total</h1>
-          : <h1>{title ? title.category : 'Quiz'}</h1>}
+    <header className={style.header}>
+      {total
+        ? <h1>Total</h1>
+        : <h1>{title ? title.category : 'Quiz'}</h1>}
 
-        <div className={style.image}>
-          <img 
-            src={title ? setImage() : General}
-            alt="Image"
-          />
-        </div>
-      </header>
-    </div>
+      <div className={style.image}>
+        <img 
+          src={title ? setImage() : General}
+          alt="Image"
+        />
+      </div>
+    </header>
   );
 }
 

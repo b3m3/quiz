@@ -37,4 +37,5 @@
   bottom: -25px;
   left: 50%;
   transform: translateX(-50%);
+  white-space: nowrap;
 }
