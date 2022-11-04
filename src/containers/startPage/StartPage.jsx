@@ -15,7 +15,7 @@ const StartPage = ({ setCurrentPage }) => {
   const [categories, setCategories] = useState(null);
   const [tags, setTags] = useState(null);
 
-  const difficultyLvls = ['Random', 'Easy', 'Medium', 'Hard'];
+  const difficultyLvls = ['Easy', 'Medium', 'Hard'];
   const {selectedCategories, selectedDifficulty, selectedTags, rangevalue,
     setSelectedCategories, setSelectedDifficulty, setSelectedTags, setRangeValue} = useContext(Context);
 
