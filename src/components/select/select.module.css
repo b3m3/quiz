@@ -29,11 +29,12 @@
   background: #fff;
   color: #333;
   border-radius: 15px;
-
+  
   transition: .5s;
 }
 
 .select .open {
+  box-shadow: 3px 3px 10px 3px rgba(51, 51, 51, 0.315);
   padding: .9375rem;
   height: 9.375rem;
   overflow: auto;
@@ -53,12 +54,14 @@
 .top p {
   font-size: 1.125rem;
   font-weight: 500;
+  width: 100%;
 }
 
 .top span {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 14px;
 
   transition: .5s;
 }
@@ -71,4 +74,17 @@
   transform: translateX(-50%);
   background-color: #4383f1;
   font-size: 13px;
+}
+
+.top b {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  right: 33px;
+  transform: translateY(-50%);
+  font-size: 18px;
 }

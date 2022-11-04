@@ -1,10 +1,11 @@
 import { useState } from 'react';
 
 import { SlArrowDown } from 'react-icons/sl';
+import { VscClose } from 'react-icons/vsc';
 
 import style from './select.module.css';
 
-const Select = ({ 
+const Select = ({
   arrData, 
   label, 
   selectedCategories, 
@@ -33,9 +34,10 @@ const Select = ({
     <div className={style.select} >
       <div
         className={style.top}
-        onClick={() => setOpen(open => !open)}
       >
-        <p>
+        <p
+          onClick={() => setOpen(open => !open)}
+        >
           {selectedCategories && selectedCategories.length 
             ? selectedCategories.join(', ').length >= 45 
               ? selectedCategories.join(', ').slice(0, 45) + '...' 
@@ -48,10 +50,25 @@ const Select = ({
                 : selectedTags.join(', ')
             : 'Random'}
         </p>
-        <span style={open ? {transform: 'rotate(180deg)'} : null}>
+        <span 
+          style={open ? {transform: 'rotate(180deg)'} : null}
+          onClick={() => setOpen(open => !open)}
+        >
           <SlArrowDown />
         </span>
         <i>{label}</i>
+        <b
+          onClick={() => 
+            label === 'Categories' 
+              ? setSelectedCategories([]) 
+              : label === 'Difficulty'
+              ? setSelectedDifficulty('')
+              : label === 'Tags'
+              ? setSelectedTags('')
+              : null}
+        >
+          <VscClose />
+        </b>
       </div>
 
       <ul className={`${open && style.open}`} >
