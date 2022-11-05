@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "./static/css/main.61008942.css",
+    "main.js": "./static/js/main.8ae318d0.js",
+    "static/css/874.0147e028.chunk.css": "./static/css/874.0147e028.chunk.css",
+    "static/js/874.26c112aa.chunk.js": "./static/js/874.26c112aa.chunk.js",
+    "static/media/history.png": "./static/media/history.4d8aa9938e2448285af3.png",
+    "static/media/sport.png": "./static/media/sport.bee51f853d0ffdce995c.png",
+    "static/media/science.png": "./static/media/science.a456e54dddb3b2af3019.png",
+    "static/media/arts.png": "./static/media/arts.612ec3ac89462a2e6c87.png",
+    "static/media/music.png": "./static/media/music.38f85974113b498a7862.png",
+    "static/media/food.png": "./static/media/food.a2e2c96b62ca3f9f0b5d.png",
+    "static/media/society.png": "./static/media/society.8c061c9acdbaca5268c4.png",
+    "static/media/general.png": "./static/media/general.13fd43173d01d088e267.png",
+    "static/media/film.png": "./static/media/film.1724d8b6cd50b9b1c65f.png",
+    "static/media/geography.png": "./static/media/geography.6389e17169cd504a255a.png",
+    "static/media/loading.svg": "./static/media/loading.e3f855659187c8ae076b55a884cb1bc0.svg",
+    "index.html": "./index.html",
+    "main.61008942.css.map": "./static/css/main.61008942.css.map",
+    "main.8ae318d0.js.map": "./static/js/main.8ae318d0.js.map",
+    "874.0147e028.chunk.css.map": "./static/css/874.0147e028.chunk.css.map",
+    "874.26c112aa.chunk.js.map": "./static/js/874.26c112aa.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.61008942.css",
+    "static/js/main.8ae318d0.js"
+  ]
+}
