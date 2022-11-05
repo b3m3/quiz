@@ -1,8 +1,8 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, lazy, Suspense } from 'react';
 
 import Header from '../../components/header/Header';
-import Quiz from '../../components/quiz/Quiz';
 import Counter from '../../components/counter/Counter';
+import Loading from '../../components/loading/Loading';
 
 import { getApiResource } from '../../service/getApiResource';
 import { ROOT_QUIZ, QUESTIONS, LIMIT, DIFFICULTY, TAGS, CATEGORIES } from '../../constans/api';
@@ -11,14 +11,16 @@ import { stringToLink, removeSymbolInLink } from '../../utils/functions';
 
 import style from './quiz-page.module.css';
 
+const Quiz = lazy(() => import('../../components/quiz/Quiz'));
+
 const QuizPage = ({ setCurrentPage }) => {
   const [errorApi, setErrorApi] = useState(false); 
   const [resultsQuestions, setResultsQuestions] = useState(null);
   const [categories, setCategories] = useState(null);
   const [numberOfQuestions, setNumberOfQuestions] = useState(null);
-  const [currentQuestion, setCurrentQuestion] = useState(1);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
 
-  const {selectedCategories, selectedDifficulty, selectedTags, rangevalue} = useContext(Context);
+  const {selectedCategories, selectedDifficulty, selectedTags, rangevalue, setRangeValue} = useContext(Context);
     
   useEffect(() => {
     const url = 
@@ -38,11 +40,12 @@ const QuizPage = ({ setCurrentPage }) => {
         setResultsQuestions({ question, correctAnswer, incorrectAnswers, difficulty, id });
         setCategories({ category });
         setNumberOfQuestions(res.length);
+        setRangeValue(rangevalue === '1' ? '10' : rangevalue);
       } else {
         setErrorApi(true);
       }
     })()
-  }, [currentQuestion, selectedCategories, selectedDifficulty, selectedTags, rangevalue]);
+  }, [currentQuestion, selectedCategories, selectedDifficulty, selectedTags, rangevalue, setRangeValue]);
 
   return (
     <div className="container">
@@ -60,13 +63,15 @@ const QuizPage = ({ setCurrentPage }) => {
             >
               Please reload the page or change categories
             </h2>
-          : <Quiz 
-              arrData={resultsQuestions}
-              currentQuestion={currentQuestion}
-              numberOfQuestions={numberOfQuestions}
-              setCurrentQuestion={setCurrentQuestion}
-              setCurrentPage={setCurrentPage}
-            />}
+          : <Suspense fallback={<Loading />}>
+              <Quiz 
+                arrData={resultsQuestions}
+                currentQuestion={currentQuestion}
+                numberOfQuestions={numberOfQuestions}
+                setCurrentQuestion={setCurrentQuestion}
+                setCurrentPage={setCurrentPage}
+              />
+            </Suspense>}
       </div>
     </div>
   );
