@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 import { SlArrowDown } from 'react-icons/sl';
 import { VscClose } from 'react-icons/vsc';
@@ -17,11 +17,14 @@ const Select = ({
 }) => {
   const [open, setOpen] = useState(false);
 
+  const refCat = useRef([]);
+  const refTag = useRef([]);
+
   const onSelectItems = (event, state) => {
     if (event.target.checked) {
       state(arr => [...arr, event.target.nextSibling.textContent]);
     } else {
-      state(arr => arr.filter(el => event.target.nextSibling.textContent !== el));
+      state(arr => arr && arr.filter(el => event.target.nextSibling.textContent !== el));
     }
   };
 
@@ -29,6 +32,27 @@ const Select = ({
     setSelectedDifficulty(event.target.textContent);
     setOpen(false);
   };
+
+  const onClearInput = () => {
+    const clear = el => {
+      if (el) {
+        el.current.map(r => {
+          r.checked = false
+        })
+      }
+    }
+
+    clear(refCat);
+    clear(refTag);
+
+    return label === 'Categories' 
+      ? setSelectedCategories([]) 
+      : label === 'Difficulty'
+      ? setSelectedDifficulty('')
+      : label === 'Tags'
+      ? setSelectedTags('')
+      : null
+  }
 
   return (
     <div className={style.select} >
@@ -57,32 +81,24 @@ const Select = ({
           <SlArrowDown />
         </span>
         <i>{label}</i>
-        <b
-          onClick={() => 
-            label === 'Categories' 
-              ? setSelectedCategories([]) 
-              : label === 'Difficulty'
-              ? setSelectedDifficulty('')
-              : label === 'Tags'
-              ? setSelectedTags('')
-              : null}
-        >
+        <b onClick={() => onClearInput()}>
           <VscClose />
         </b>
       </div>
 
       <ul className={`${open && style.open}`} >
-        {arrData && arrData.map(el => (
+        {arrData && arrData.map((el, i) => (
           <li 
             key={label === 'Categories' ? el[0].split(' ')[0] : el}
           >
             {
               label === 'Categories'
                 ? <>
-                    <input 
-                      type="checkbox"
+                    <input
+                      ref={el => refCat.current[i] = el}
                       id={el[0].split(' ')[0]}
-                      onClick={e => onSelectItems(e, setSelectedCategories)}
+                      type="checkbox"
+                      onChange={e => onSelectItems(e, setSelectedCategories)}
                     />
                     <label htmlFor={el[0].split(' ')[0]}>
                       {el[0]}
@@ -90,10 +106,11 @@ const Select = ({
                   </>
                 : label === 'Tags'
                 ? <>
-                    <input 
-                      type="checkbox"
+                    <input
+                      ref={el => refTag.current[i] = el}
                       id={'tag' + el}
-                      onClick={e => onSelectItems(e, setSelectedTags)}
+                      type="checkbox"
+                      onChange={e => onSelectItems(e, setSelectedTags)}
                     />
                     <label htmlFor={'tag' + el}>
                       {el}
