@@ -17,16 +17,20 @@ function App() {
   const [selectedTags, setSelectedTags] = useState('');
   const [rangevalue, setRangeValue] = useState('1');
 
+  const [correctAnswers, setCorrectAnswers] = useState(0);
+
   return (
     <Context.Provider value={{
       selectedCategories,
       selectedDifficulty,
       selectedTags,
       rangevalue,
+      correctAnswers,
       setSelectedCategories,
       setSelectedDifficulty,
       setSelectedTags,
-      setRangeValue
+      setRangeValue,
+      setCorrectAnswers
     }}>
       <div className="app">
         {pages.map((Page, index) => (
