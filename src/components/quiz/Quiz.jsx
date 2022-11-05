@@ -1,13 +1,16 @@
-import { useEffect } from 'react';
-import { useState } from 'react';
-import style from './quiz.module.css';
+import { useEffect, useState } from 'react';
 
 import Button from '../button/Button';
+
+import { shuffle } from '../../utils/functions';
+
+import style from './quiz.module.css';
+
 
 const Quiz = ({ arrData, numberOfQuestions, currentQuestion, setCurrentPage, setCurrentQuestion }) => {
   const [correct, setCorrect] = useState(null);
   const [answers, setAnswers] = useState(null);
-
+  
   useEffect(() => {
     if (arrData) {
       setAnswers([arrData.correctAnswer, ...arrData.incorrectAnswers]);
@@ -23,7 +26,7 @@ const Quiz = ({ arrData, numberOfQuestions, currentQuestion, setCurrentPage, set
           <h3>{arrData.question}</h3>
           
           <ul>
-            {answers && answers.map((answer, i) => (
+            {answers && shuffle(answers).map((answer, i) => (
               <li key={i}>
                 <Button 
                   name={answer}
@@ -31,6 +34,7 @@ const Quiz = ({ arrData, numberOfQuestions, currentQuestion, setCurrentPage, set
                   numberOfQuestions={numberOfQuestions}
                   setCurrentQuestion={setCurrentQuestion}
                   setCurrentPage={setCurrentPage}
+                  correct={correct}
                 />
               </li>
             ))}
