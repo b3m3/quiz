@@ -1,18 +1,31 @@
+import { useContext } from 'react';
+
+import { Context } from '../../context/context';
+
 import style from './button.module.css';
 
-const Button = ({ name, numberOfQuestions, currentQuestion, setCurrentPage, setCurrentQuestion }) => {
+const Button = ({ name, numberOfQuestions, currentQuestion, correct, setCurrentPage, setCurrentQuestion }) => {
+  const {setCorrectAnswers} = useContext(Context);
 
-  const onClick = () => {
+  const onClick = (e) => {
     if (setCurrentPage && name === "Start") {
-      return setCurrentPage(1);
+      setCurrentPage(1);
     }
 
-    if (currentQuestion >= (numberOfQuestions - 1)) {
-      return setCurrentPage(2);
+    if (setCurrentPage && name === "Start over") {
+      window.location.reload();
+    }
+
+    if ((currentQuestion-1) >= (numberOfQuestions-2)) {
+      setCurrentPage(2);
     }
     
-    if (setCurrentQuestion && currentQuestion <= (numberOfQuestions - 1)) {
-      return setCurrentQuestion(c => c + 1);
+    if (setCurrentQuestion && currentQuestion <= numberOfQuestions) {
+      setCurrentQuestion(c => c + 1);
+    }
+
+    if (name && name === correct) {
+      setCorrectAnswers(corr => corr + 1);
     }
 
     return;
@@ -24,7 +37,7 @@ const Button = ({ name, numberOfQuestions, currentQuestion, setCurrentPage, setC
       style={name === 'Start' || name === 'Start over' ? {padding: '50px 0 30px 0'} : null}
     >
       <button 
-        onClick={() => onClick()}
+        onClick={e => onClick(e)}
       >
         {name}
       </button>
