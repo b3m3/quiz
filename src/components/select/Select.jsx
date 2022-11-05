@@ -37,7 +37,7 @@ const Select = ({
     const clear = el => {
       if (el) {
         el.current.map(r => {
-          r.checked = false
+          return r.checked = false
         })
       }
     }
