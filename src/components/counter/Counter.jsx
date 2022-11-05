@@ -17,9 +17,9 @@ const Counter = ({ big, guessedQuestions, totalQuestions }) => {
         <circle
           className={style.cll}
           style={big 
-            ? {strokeDasharray: `${(guessedQuestions / totalQuestions) * 408}px 408px`,
+            ? {strokeDasharray: `${((guessedQuestions + 1)/ totalQuestions) * 408}px 408px`,
               r: "65", cx: "-80", cy: "80", strokeWidth: "4"}
-            : {strokeDasharray: `${(guessedQuestions / totalQuestions) * 125}px 125px`,
+            : {strokeDasharray: `${((guessedQuestions + 1) / totalQuestions) * 125}px 125px`,
               r: "20", cx: "-25", cy: "25", strokeWidth: "2"}}
         />
       </svg>
@@ -29,7 +29,7 @@ const Counter = ({ big, guessedQuestions, totalQuestions }) => {
           ? {fontSize: "34px"}
           : {fontSize: "12px"}}
       >
-        <span>{guessedQuestions}</span>
+        <span>{guessedQuestions + 1}</span>
         <span className={style.slash}>/</span>
         <span>{totalQuestions}</span>
       </div>
