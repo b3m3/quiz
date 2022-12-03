@@ -19,13 +19,16 @@
   color: #fff;
   border-radius: 3.125rem;
   border: none;
-  transition: .3s;
+  transition: .1s;
 }
 
-.wrapp button:hover {
-  background: rgba(255, 255, 255, .3);
+@media (any-hover: hover) {
+  .wrapp button:hover {
+    background: rgba(255, 255, 255, .3);
+  }
 }
+
 
 .wrapp button:active {
-  transform: translateY(7px);
+  transform: translateY(7px) scale(0.97);
 }
