@@ -39,7 +39,7 @@ const Header = ({ title, total }) => {
       <div className={style.image}>
         <img 
           src={title ? setImage() : General}
-          alt="Image"
+          alt="img"
         />
       </div>
     </header>

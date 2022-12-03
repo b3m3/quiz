@@ -63,27 +63,38 @@ const Select = ({
           onClick={() => setOpen(open => !open)}
         >
           {selectedCategories && selectedCategories.length 
-            ? selectedCategories.join(', ').length >= 45 
-              ? selectedCategories.join(', ').slice(0, 45) + '...' 
-              : selectedCategories.join(', ')
+            ? selectedCategories.join(', ')
             : selectedDifficulty && selectedDifficulty.length
               ? selectedDifficulty
             : selectedTags && selectedTags.length
-              ? selectedTags.join(', ').length >= 45 
-                ? selectedTags.join(', ').slice(0, 45) + '...'
-                : selectedTags.join(', ')
+              ? selectedTags.join(', ')
             : 'Random'}
         </p>
-        <span 
-          style={open ? {transform: 'rotate(180deg)'} : null}
+
+        <SlArrowDown 
+          className={style.arrow}
+          style={open ? {transform: 'translateY(-50%) rotate(180deg)'} : null}
           onClick={() => setOpen(open => !open)}
-        >
-          <SlArrowDown />
-        </span>
+        />
+
+        {selectedCategories && selectedCategories.length 
+          ? <VscClose
+              className={style.close}
+              onClick={() => onClearInput()}
+            />
+          : selectedDifficulty && selectedDifficulty.length
+            ? <VscClose
+                className={style.close}
+                onClick={() => onClearInput()}
+              />
+          : selectedTags && selectedTags.length
+            ? <VscClose
+                className={style.close}
+                onClick={() => onClearInput()}
+              />
+          : null}
+
         <i>{label}</i>
-        <b onClick={() => onClearInput()}>
-          <VscClose />
-        </b>
       </div>
 
       <ul className={`${open && style.open}`} >

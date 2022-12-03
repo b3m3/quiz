@@ -1,5 +1,6 @@
 .select {
   position: relative;
+  
 }
 
 .select input, .select label {
@@ -15,7 +16,7 @@
 
 .select ul {
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   top: 55px;
   left: 0;
   height: 0;
@@ -43,27 +44,60 @@
 .top {
   position: relative;
   cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   border: 1px solid #fff;
   padding: .8125rem;
   border-radius: 25px;
 }
 
+.top::before {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  content: '';
+  top: 0;
+  right: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #4383f1 100%);
+  border-radius: 0 25px 25px 0;
+}
+
 .top p {
+  position: relative;
+  z-index: 0;
+  white-space: nowrap;
   font-size: 1.125rem;
   font-weight: 500;
   width: 100%;
+  overflow: hidden;
 }
 
-.top span {
+.top svg {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  transform: translateY(-50%);
+
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
 
+  background: rgba(255, 255, 255, .8);
+  color: #4383f1;
+  border-radius: 50%;
+  width: 1.375rem;
+  height: 1.375rem;
   transition: .5s;
+}
+
+.top .arrow {
+  right: .75rem;
+  padding: 5px;
+}
+
+.top .close {
+  right: 2.375rem;
+  padding: 4px;
 }
 
 .top i {
@@ -74,17 +108,4 @@
   transform: translateX(-50%);
   background-color: #4383f1;
   font-size: 13px;
-}
-
-.top b {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  position: absolute;
-  z-index: 1;
-  top: 50%;
-  right: 33px;
-  transform: translateY(-50%);
-  font-size: 18px;
 }
