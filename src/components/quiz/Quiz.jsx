@@ -26,18 +26,19 @@ const Quiz = ({ arrData, numberOfQuestions, currentQuestion, setCurrentPage, set
           <h3>{arrData.question}</h3>
           
           <ul>
-            {answers && shuffle(answers).map((answer, i) => (
-              <li key={i}>
-                <Button 
-                  name={answer}
-                  currentQuestion={currentQuestion}
-                  numberOfQuestions={numberOfQuestions}
-                  setCurrentQuestion={setCurrentQuestion}
-                  setCurrentPage={setCurrentPage}
-                  correct={correct}
-                />
-              </li>
-            ))}
+            {answers 
+              && shuffle(answers).map((answer, i) => (
+                <li key={i}>
+                  <Button 
+                    name={answer}
+                    currentQuestion={currentQuestion}
+                    numberOfQuestions={numberOfQuestions}
+                    setCurrentQuestion={setCurrentQuestion}
+                    setCurrentPage={setCurrentPage}
+                    correct={correct}
+                  />
+                </li>
+              ))}
           </ul>
         </>
       }

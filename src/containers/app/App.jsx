@@ -1,23 +1,26 @@
-import { useState } from 'react';
+import { useState, lazy, Suspense } from 'react';
 
 import StartPage from '../startPage/StartPage';
-import QuizPage from '../quizPage/QuizPage';
 import TotalPage from '../totalPage/TotalPage';
+import Loading from '../../components/loading/Loading';
 
 import { Context } from '../../context/context';
 
 import './app.css';
 
+const QuizPage = lazy(() => import('../quizPage/QuizPage'));
+
 function App() {
   const [currentPage, setCurrentPage] = useState(0);
-  const pages = [StartPage, QuizPage, TotalPage];
-
+  
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedDifficulty, setSelectedDifficulty] = useState('');
   const [selectedTags, setSelectedTags] = useState('');
   const [rangevalue, setRangeValue] = useState('1');
-
   const [correctAnswers, setCorrectAnswers] = useState(0);
+
+  
+  const pages = [StartPage, QuizPage, TotalPage];
 
   return (
     <Context.Provider value={{
@@ -35,7 +38,11 @@ function App() {
       <div className="app">
         {pages.map((Page, index) => (
           <div className='app-wrapp' key={index}>
-            {currentPage === index && <Page setCurrentPage={setCurrentPage}/>} 
+            {currentPage === index && 
+              <Suspense fallback={<Loading />}>
+                <Page setCurrentPage={setCurrentPage}/>
+              </Suspense>
+            } 
           </div>
         ))}
       </div>

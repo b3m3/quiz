@@ -4,6 +4,7 @@ const Counter = ({ big, guessedQuestions, totalQuestions }) => {
   return (
     <div className={style.counter}>
       <svg
+        xmlns="http://www.w3.org/2000/svg"
         style={big 
           ? {width: "160px", height: "160px"}
           : {width: "50px", height: "50px"}}

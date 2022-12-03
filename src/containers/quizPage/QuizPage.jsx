@@ -1,7 +1,5 @@
 import { useState, useEffect, useContext, lazy, Suspense } from 'react';
 
-import Header from '../../components/header/Header';
-import Counter from '../../components/counter/Counter';
 import Loading from '../../components/loading/Loading';
 
 import { getApiResource } from '../../service/getApiResource';
@@ -11,6 +9,8 @@ import { stringToLink, removeSymbolInLink } from '../../utils/functions';
 
 import style from './quiz-page.module.css';
 
+const Header = lazy(() => import('../../components/header/Header'));
+const Counter = lazy(() => import('../../components/counter/Counter'));
 const Quiz = lazy(() => import('../../components/quiz/Quiz'));
 
 const QuizPage = ({ setCurrentPage }) => {
@@ -50,13 +50,17 @@ const QuizPage = ({ setCurrentPage }) => {
   return (
     <div className="container">
       <div className={style.quiz}>
-        <Header 
-          title={categories}
-        />
-        <Counter
-          guessedQuestions={currentQuestion}
-          totalQuestions={numberOfQuestions}
-        />
+        <Suspense fallback={<Loading />}>
+          <Header 
+            title={categories}
+          />
+        </Suspense>
+        <Suspense fallback={<Loading />}>          
+          <Counter
+            guessedQuestions={currentQuestion}
+            totalQuestions={numberOfQuestions}
+          />
+        </Suspense>
         {errorApi
           ? <h2 
               style={{textAlign: 'center', padding: '20px 0'}}
@@ -71,7 +75,8 @@ const QuizPage = ({ setCurrentPage }) => {
                 setCurrentQuestion={setCurrentQuestion}
                 setCurrentPage={setCurrentPage}
               />
-            </Suspense>}
+            </Suspense>
+        }
       </div>
     </div>
   );
